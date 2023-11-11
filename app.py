@@ -5,6 +5,11 @@ import base64
 from PIL import Image
 import numpy as np
 import time
+import math
+import pandas as pd
+from streamlit_echarts import st_echarts
+import random
+
 
 class Portfolio:
     def __init__(self) -> None:
@@ -66,6 +71,62 @@ class Portfolio:
         vurdere potensial for energieffektiviseringstiltak i den norske bygningsmassen. </medium> ''' % b64
         st.write(html, unsafe_allow_html=True)
         
+    def ring_gauge(self):
+        option = {
+            "series": [
+                {
+                    "type": "gauge",
+                    "startAngle": 90,
+                    "endAngle": -270,
+                    "pointer": {"show": False},
+                    "progress": {
+                        "show": True,
+                        "overlap": False,
+                        "roundCap": True,
+                        "clip": False,
+                        "itemStyle": {"borderWidth": 1, "borderColor": "#464646"},
+                        },
+                    "axisLine": {"lineStyle": {"width": 40}},
+                    "splitLine": {"show": False, "distance": 0, "length": 10},
+                    "axisTick": {"show": False},
+                    "axisLabel": {"show": False, "distance": 50},
+                    "data": [
+                        {
+                            "value": 70,
+                            "name": "Python",
+                            "title": {"offsetCenter": ["0%", "-30%"]},
+                            "detail": {"offsetCenter": ["0%", "-20%"]}
+                            },
+                        {
+                            "value": 80,
+                            "name": "Streamlit",
+                            "title": {"offsetCenter": ["0%", "0%"]},
+                            "detail": {"offsetCenter": ["0%", "10%"]},
+                            },
+                        {
+                            "value": random.randint(1, 99),
+                            "name": "Commonly",
+                            "title": {"offsetCenter": ["0%", "30%"]},
+                            "detail": {"offsetCenter": ["0%", "40%"]},
+                            },
+                        ],
+                    "title": {"fontSize": 14},
+                    "detail": {
+                        "width": 50,
+                        "height": 14,
+                        "fontSize": 14,
+                        "color": "auto",
+                        "borderColor": "auto",
+                        "borderRadius": 20,
+                        "borderWidth": 1,
+                        "formatter": "{value}%",
+                        },
+                    }
+                ]
+            }
+        #st_echarts(option, height="500px", key="echarts")
+        
+        
     def main(self):
         self.set_streamlit_settings()
         #self.__render_svg(svg = self.MAIL_SVG, text = "msylju@gmail.com")
@@ -75,13 +136,11 @@ class Portfolio:
         self.__who_am_i()
         #--
         st.write("")
-        c1, c2, c3 = st.columns(3)
+        c1, c2 = st.columns(2)
         with c1:
             self.__render_click_logos(svg = self.LINKEDIN_SVG, text = "LinkedIn", link_url = "https://www.linkedin.com/in/magne-sylju%C3%A5sen-35235738/", degrees = 45)
         with c2:
             self.__render_click_logos(svg = self.GITHUB_SVG, text = "GitHub", link_url = "https://github.com/magnesyljuasen", degrees = 90)
-        with c3:
-            self.__render_click_logos(svg = self.FACEBOOK_SVG, text = "Facebook", link_url = "https://www.facebook.com/", degrees = 135)
         st.write("")
         st.header("Prosjekter")
         with st.expander("Bergvarmekalkulatoren"):
@@ -102,7 +161,7 @@ class Portfolio:
             st.write("Kommer ...")
         with st.expander("Intern webside for grunnvarmegruppa"):
             st.write("Kommer ...")
-        
+        self.ring_gauge()
         
         st.write("")
         c1, c2 = st.columns(2)
@@ -118,7 +177,7 @@ class Portfolio:
             self.__render_svg(svg = self.MUSIC_SVG, text = "Liker å synge og spille gitar.")
         
         st.write("")
-        st.button("Ta kontakt")
+        st_lottie("https://lottie.host/65eb2703-6b4a-4b22-a022-e7051369ca74/G6txfabyKf.json")
         
 if __name__ == "__main__":
     portfolio = Portfolio()
