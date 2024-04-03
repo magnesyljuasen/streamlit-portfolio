@@ -129,6 +129,7 @@ div.stButton > button:first-child {
 }
 */
 
+div[class^='block-container'] { padding-top: 2rem; }
 
 /* Style containers */
 [data-testid="stVerticalBlock"] > [style*="flex-direction: column;"] > [data-testid="stVerticalBlock"] {

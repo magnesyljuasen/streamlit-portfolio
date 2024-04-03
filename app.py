@@ -4,11 +4,9 @@ from streamlit_card import card
 import base64
 from PIL import Image
 import numpy as np
-import time
-import math
 import pandas as pd
 from streamlit_echarts import st_echarts
-import random
+import plotly.express as px
 
 
 class Portfolio:
@@ -26,7 +24,10 @@ class Portfolio:
         self.GIS_SVG = """ <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#dddddd"><path d="M23.961 8.429c-.831.982-1.614 1.918-1.961 3.775v6.683l-4 2.479v-9.161c-.206-1.104-.566-1.885-1-2.539v11.475l-4-2.885v-13.069l1.577 1.138c-.339-.701-.577-1.518-.577-2.524l.019-.345-2.019-1.456-5.545 4-6.455-4v18l6.455 4 5.545-4 5.545 4 6.455-4v-11.618l-.039.047zm-17.961 12.936l-4-2.479v-13.294l4 2.479v13.294zm5-3.11l-4 2.885v-13.067l4-2.886v13.068zm9-18.255c-2.1 0-4 1.702-4 3.801 0 3.121 3.188 3.451 4 8.199.812-4.748 4-5.078 4-8.199 0-2.099-1.9-3.801-4-3.801zm0 5.5c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5 1.5.671 1.5 1.5-.672 1.5-1.5 1.5z"/></svg>"""
         self.LIFE_SVG = """ <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#dddddd"><path d="M20 6.093l-3-3v-2.093h3v5.093zm1 11.349c.813.315 1.732.558 3 .558v2c-3.896 0-5.083-2-8.002-2-3.04 0-4.436 2-8.002 2-3.684 0-4.376-2-7.996-2v-2c1.275 0 2.217.184 3 .438v-4.438h-3l12-12 12 12h-3v5.442zm-11-3.442v3.692c1.327-.403 2.469-1.089 4-1.45v-2.242h-4zm-2.004 8c-3.184 0-3.767-2-7.996-2v2c3.62 0 4.312 2 7.996 2 3.566 0 4.962-2 8.002-2 2.919 0 4.106 2 8.002 2v-2c-3.649 0-4.438-2-8.002-2-3.581 0-4.977 2-8.002 2z"/></svg>"""
         self.CODING_SVG = """ <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#dddddd"><path d="M21 3c0-1.657-1.343-3-3-3s-3 1.343-3 3c0 1.323.861 2.433 2.05 2.832.168 4.295-2.021 4.764-4.998 5.391-1.709.36-3.642.775-5.052 2.085v-7.492c1.163-.413 2-1.511 2-2.816 0-1.657-1.343-3-3-3s-3 1.343-3 3c0 1.305.837 2.403 2 2.816v12.367c-1.163.414-2 1.512-2 2.817 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.295-.824-2.388-1.973-2.808.27-3.922 2.57-4.408 5.437-5.012 3.038-.64 6.774-1.442 6.579-7.377 1.141-.425 1.957-1.514 1.957-2.803zm-16.8 0c0-.993.807-1.8 1.8-1.8s1.8.807 1.8 1.8-.807 1.8-1.8 1.8-1.8-.807-1.8-1.8zm3.6 18c0 .993-.807 1.8-1.8 1.8s-1.8-.807-1.8-1.8.807-1.8 1.8-1.8 1.8.807 1.8 1.8z"/></svg>"""
-        
+        self.ARCGIS_SVG = """ <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#dddddd"><path d="M24 12a4.99 4.99 0 0 1-2.15 4.101l-.85-.495v-.163a3.974 3.974 0 0 0-1.377-7.377l-.79-.124-.052-.798a5.293 5.293 0 0 0-10.214-1.57L8.17 6.59l-.977-.483A2.277 2.277 0 0 0 6.19 5.87a2.18 2.18 0 0 0-1.167.339 2.206 2.206 0 0 0-.98 1.395l-.113.505-.476.2A4 4 0 0 0 5 16h2v1H5a5 5 0 0 1-1.934-9.611 3.21 3.21 0 0 1 1.422-2.025 3.17 3.17 0 0 1 1.702-.493 3.269 3.269 0 0 1 1.446.34 6.293 6.293 0 0 1 12.143 1.867A4.988 4.988 0 0 1 24 12zm-5.437 7.5l-4.016 2.342-4.015-2.342.587-.342-.993-.579-1.578.92 6 3.501 6-3.5-1.579-.92-.992.578zm1.985-3l-1.579-.92-.992.578.586.342-4.016 2.342-4.015-2.342.587-.342-.993-.579-1.578.921 6 3.5zm-12-3l6-3.5 6 3.5-6 3.5zm6 2.342l4.015-2.342-4.016-2.343-4.015 2.343z"/><path fill="none" d="M0 0h24v24H0z"/></svg>"""
+        self.MATH_SVG = """<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#dddddd"><path fill="#dddddd" d="M14 16.5c0 .83-.67 1.5-1.5 1.5h-7c-.83 0-1.5-.67-1.5-1.5 0-.293.095-.566.25-.814.443-.707.855-1.433 1.272-2.157l1.38-2.405c.364-.636.73-1.27 1.088-1.91.02-.038.256-.385.23-.425l-.443-.72-1.045-1.697-1.22-1.986-.84-1.36c-.246-.4-.578-.815-.65-1.292-.05-.338.01-.695.185-.992C4.49.258 5.02-.003 5.572 0H13c.55 0 1 .45 1 1s-.45 1-1 1H7.57l.59.983c.415.693.83 1.387 1.247 2.08l1.13 1.887c.197.33.472.673.454 1.074-.01.27-.13.517-.273.74-.35.55-.672 1.12-1.004 1.68L8.275 12.87l-1.092 1.84c-.016.025-.142.29-.173.29h5.49c.83 0 1.5.67 1.5 1.5z"/><path fill="#dddddd" d="M4.83 11.55c-.19.29-.51.45-.83.45-.19 0-.38-.05-.55-.17l-3-2c-.01-.01-.02-.01-.02-.02-.1-.06-.19-.15-.26-.26-.31-.45-.18-1.08.28-1.38l3-2c.45-.31 1.07-.18 1.382.28.31.45.18 1.08-.28 1.38L2.8 9l1.75 1.17c.46.3.59.92.28 1.38zM13.17 11.55c.19.29.51.45.83.45.19 0 .38-.05.55-.17l3-2c.01-.01.02-.01.02-.02.1-.06.19-.15.26-.26.31-.45.18-1.08-.28-1.38l-3-2c-.45-.31-1.07-.18-1.382.28-.31.45-.18 1.08.28 1.38L15.198 9l-1.75 1.17c-.46.3-.59.92-.28 1.38z"/></svg>"""
+        self.PYTHON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#dddddd"><path d="M6 2.5H7M4.5 4V1.5C4.5 0.947715 4.94772 0.5 5.5 0.5H9.5C10.0523 0.5 10.5 0.947715 10.5 1.5V6.5C10.5 7.05228 10.0523 7.5 9.5 7.5H5.5C4.94772 7.5 4.5 7.94772 4.5 8.5V13.5C4.5 14.0523 4.94772 14.5 5.5 14.5H9.5C10.0523 14.5 10.5 14.0523 10.5 13.5V11M8 4.5H1.5C0.947715 4.5 0.5 4.94772 0.5 5.5V10.5C0.5 11.0523 0.947715 11.5 1.5 11.5H4.5M7 10.5H13.5C14.0523 10.5 14.5 10.0523 14.5 9.5V4.5C14.5 3.94772 14.0523 3.5 13.5 3.5H10.5M8 12.5H9" stroke="#000000"/></svg>"""
+        self.API_SVG = """<svg xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" viewBox="0 0 24 24" fill="#dddddd"/><path d="M20,6H4A2,2,0,0,0,2,8v8a2,2,0,0,0,2,2H20a2,2,0,0,0,2-2V8A2,2,0,0,0,20,6ZM9.29,14.8,9,13.73H7.16L6.87,14.8H5.17L7,9.07H9.09L11,14.8Zm6.34-3.14a1.7,1.7,0,0,1-.36.64,1.82,1.82,0,0,1-.67.44,2.75,2.75,0,0,1-1,.17h-.44V14.8H11.6V9.09h2a2.43,2.43,0,0,1,1.62.47,1.67,1.67,0,0,1,.55,1.35A2.36,2.36,0,0,1,15.63,11.66Zm2.58,3.14H16.66V9.09h1.55ZM8.45,11.53l.24.93H7.48l.24-.93c0-.13.08-.28.12-.47s.09-.38.13-.57a4.63,4.63,0,0,0,.1-.48c0,.13.07.29.11.5l.15.58Zm5.59-1a.57.57,0,0,1,.16.43.75.75,0,0,1-.11.42.59.59,0,0,1-.27.22.9.9,0,0,1-.37.07h-.31V10.34h.4A.63.63,0,0,1,14,10.51Z" fill-rule="evenodd"/></svg>"""
     def set_streamlit_settings(self):
         st.set_page_config(
         page_title="Magne Syljuåsen",
@@ -59,12 +60,14 @@ class Portfolio:
         html = f'<center> <img src="data:image/svg+xml;base64,%s"/> </center>' % b64
         st.markdown(f'<div style="background: repeating-linear-gradient({degrees}deg, transparent, transparent 15px, transparent 10px, #007db3 20px);color:black;border: solid 1px #e5e7eb; border-radius: 15px; text-align: center;padding: 1em;min-height: 60px;display: inline-block;box-sizing: border-box;width: 100%;" {html} <a target="parent"  href="{link_url}">{text}</a> </div>', unsafe_allow_html=True)       
     
-    def _github_linkedin(self):
-        c1, c2 = st.columns(2)
+    def _github_linkedin_cv(self):
+        c1, c2, c3 = st.columns(3)
         with c1:
             self._render_click_logos(svg = self.LINKEDIN_SVG, text = "LinkedIn", link_url = "https://www.linkedin.com/in/magne-sylju%C3%A5sen-35235738/", degrees = 45)
         with c2:
             self._render_click_logos(svg = self.GITHUB_SVG, text = "GitHub", link_url = "https://github.com/magnesyljuasen", degrees = 90)
+        with c3:
+            self._render_click_logos(svg = self.CODING_SVG, text = "CV", link_url = "https://github.com/magnesyljuasen", degrees = 135)
         
     def __who_am_i(self):
         svg_education = self.SPEECH_SVG
@@ -129,7 +132,7 @@ class Portfolio:
                     }
                 ]
             }
-        st_echarts(option, height="300px", key="echarts")
+#        st_echarts(option, height="300px", key="echarts")
         
         
     def main(self):
@@ -141,12 +144,15 @@ class Portfolio:
 #            self._render_click_logos(svg = self.LINKEDIN_SVG, text = "LinkedIn", link_url = "https://www.linkedin.com/in/magne-sylju%C3%A5sen-35235738/", degrees = 45)
 #            self._render_click_logos(svg = self.GITHUB_SVG, text = "GitHub", link_url = "https://github.com/magnesyljuasen", degrees = 90)
         
-        st.title("Hei👋 Jeg er Magne Syljuåsen")
+        st.title("Hei! Jeg er Magne Syljuåsen")
         self.__who_am_i()
         #--
-        st.header("Prosjekter")
+        st.header("Prosjekter", divider=True)
+        video_file = open('video.mp4', 'rb')
+        video_bytes = video_file.read()
+        st.video(video_bytes, subtitles="subtitles.vtt")
         with st.popover("Bergvarmekalkulatoren", use_container_width=True):
-            st.header("Bergvarmekalkulatoren")
+            st.subheader("Bergvarmekalkulatoren")
             st.write(""" 
                      Bergvarmekalkulatoren er et egenutviklet digitalt verktøy 
                      som gjør det enkelt å få en pekepinn på størrelsen, 
@@ -159,35 +165,50 @@ class Portfolio:
                      på å øke kompetansen hos kunden, skape mer oppmerksomhet 
                      rundt bergvarme, og anbefale kunder å velge kvalitetssikrete 
                      installatørbedrifter som er en del av NOVAPs godkjenningsordning. """)
-            st.markdown(f'<a target="parent" style="font-size: 1.0rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.varmepumpeinfo.no/bergvarme/kalkulator">Tjenesten er solgt til NOVAP og ligger ute på varmepumpeinfo.no.</a>', unsafe_allow_html=True)
-            image = Image.open('src/data/bergvarmekalkulatoren_showcase_2.png')
-            st.image(image, use_column_width=True)
+            st.markdown(f'<a target="parent" style="font-size: 1.1rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.varmepumpeinfo.no/bergvarme/kalkulator">Tjenesten ligger ute på varmepumpeinfo.no. Prøv den her!</a>', unsafe_allow_html=True)
+#            image = Image.open('src/data/bergvarmekalkulatoren_showcase_2.png')
+#            st.image(image, use_column_width=True)
         with st.popover("Energy Plan Zero", use_container_width=True):
-            st.write("Kommer ...")
-            st.markdown(f'<a target="parent" style="font-size: 1.0rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.av-energiplanlegging.no">Tjenesten er solgt til NOVAP og ligger ute på varmepumpeinfo.no.</a>', unsafe_allow_html=True)
+            st.subheader("Energy Plan Zero")
+            st.write("""
+                     Energy Plan Zero (AV Energiplanlegging) er en samling verktøy utviklet av 
+                     Asplan Viak til å beregne energi og effektbehov til en 
+                     bygningsmasse. Alt fra nabolag opp til hele kommuner og fylker. 
+                     Verkøyene kan brukes til å finne de beste energiforsyningsløsningene, 
+                     klimagassutslipp, kostnader, flaskehalser og hvordan disse kan løses. 
+                     """)
+            st.write("Jeg har sammen med en annen utvikler implementert metoden.")
+            st.markdown(f'<a target="parent" style="font-size: 1.1rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.av-energiplanlegging.no">Les mer om verktøyene her.</a>', unsafe_allow_html=True)
             
-        with st.popover("Intern webside for grunnvarmegruppa", use_container_width=True):
-            st.write("Kommer ...")
+        with st.popover("Internside for grunnvarmegruppa", use_container_width=True):
+            st.subheader("Internside for grunnvarmegruppa")
+            st.write("""
+                     Internsiden for grunnvarmegruppa er ment som en 
+                     intern samhandlingsplattform for å forenkle, forbedre 
+                     og effektivisere repetetive arbeidsoppgaver.""")
         self.ring_gauge()
-        
-        st.header("Prosjekter")
-        
-        st.write("")
+        st.header("Skills", divider=True)
         c1, c2 = st.columns(2)
         with c1:
-            st.subheader("Skills")
-            self._render_svg(svg = self.CODING_SVG, text = "Programmerer i Python. Benytter meg mye av Streamlit, Numpy og Pandas. Bruker GitHub, Visual Studio Code og Azure DevOps.")
-            self._render_svg(svg = self.GIS_SVG, text = "Jobbet mye med ArcGIS, og i tillegg open-source GIS-tjenester som GeoPandas, Shapely og Folium.")
+            self._render_svg(svg=self.CODING_SVG, text="Kildekodehåndtering i GitHub og Azure DevOps.")
+            self._render_svg(svg=self.ARCGIS_SVG, text="""ArcGIS der jeg bla. har vært med å lage flere Python-toolboxer til Arcgis Pro samt utviklet low-code apper i ArcGIS Online. """)
+            self._render_svg(svg=self.GIS_SVG, text="""Open-source GIS-tjenester som Folium (2D) og Pydeck (3D). GeoPandas, Pandas, Shapely og Fiona for geografisk dataprosessering.""")
         with c2:
-            st.subheader("Om meg")
-            self._render_svg(svg = self.EDUCATION_SVG, text = "Utdannet sivilingeniør innen tekniske geofag fra Norges teknisk-naturvitenskapelige universitet (NTNU)")
-            self._render_svg(svg = self.LIFE_SVG, text = "Samboer med Emma.")
-            self._render_svg(svg = self.SPORTS_SVG, text = "Har spillt fotball aktivt i 20 år. Driver i dag med fotball på hobbybasis, og er nysgjerrig på andre idretter.")
-            self._render_svg(svg = self.MUSIC_SVG, text = "Liker å synge og spille gitar.")
+            self._render_svg(svg=self.MATH_SVG, text=""" Bred erfaring med Numpy og Pandas.""")
+            self._render_svg(svg=self.PYTHON_SVG, text=""" Python og MATLAB.""")
+            self._render_svg(svg=self.PYTHON_SVG, text=""" Streamlit. CSS, HTML.""")
+            self._render_svg(svg=self.API_SVG, text=""" .""")
+        st.header("Om meg", divider=True)
+        c1, c2 = st.columns(2)
+        with c1:
+            self._render_svg(svg = self.EDUCATION_SVG, text = "Utdannet sivilingeniør innen tekniske geofag fra Norges teknisk-naturvitenskapelige universitet (NTNU).")
+            self._render_svg(svg = self.LIFE_SVG, text = "Samboer med Emma som studerer til å bli grunnskolelærer.")
+        with c2:
+            self._render_svg(svg = self.SPORTS_SVG, text = "Har spillt fotball i 20 år. Driver i dag med fotball på hobbybasis, og er nysgjerrig på andre idretter.")
+            self._render_svg(svg = self.MUSIC_SVG, text = "Liker å synge og spille gitar. Er med i koret på jobben, og akkompagnerte med gitar på sommerfesten og julebordet i år.")
         
-        st.write("")
-        self._github_linkedin()
-        st_lottie("https://lottie.host/65eb2703-6b4a-4b22-a022-e7051369ca74/G6txfabyKf.json")
+        self._github_linkedin_cv()
+#        st_lottie("https://lottie.host/65eb2703-6b4a-4b22-a022-e7051369ca74/G6txfabyKf.json")
         
 if __name__ == "__main__":
     portfolio = Portfolio()
