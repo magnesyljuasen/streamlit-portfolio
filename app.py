@@ -32,7 +32,7 @@ class Portfolio:
         page_title="Magne Syljuåsen",
         page_icon="🧍",
         layout="centered",
-        initial_sidebar_state="collapsed")
+        initial_sidebar_state="expanded")
         
         with open("src/styles/main.css") as f:
             st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
@@ -49,17 +49,22 @@ class Portfolio:
             unsafe_allow_html=True,
         )
         
-    def __render_svg(self, svg, text):
+    def _render_svg(self, svg, text):
         b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
         html = f'<img src="data:image/svg+xml;base64,%s"/> {text}' % b64
-        st.write(html, unsafe_allow_html=True)
-        #st.markdown(f'<a target="parent" style="background-color: #white;text-decoration: underline;color:black;font-size:2.0rem;border: solid 1px #e5e7eb; border-radius: 15px; text-align: center;padding: 16px 24px;min-height: 60px;display: inline-block;box-sizing: border-box;width: 100%;" href="https://www.varmepumpeinfo.no/forhandler?">Sett i gang - finn en seriøs entreprenør!</a>', unsafe_allow_html=True)       
+        st.markdown(html, unsafe_allow_html=True)
     
-    def __render_click_logos(self, svg, text, link_url, degrees):
+    def _render_click_logos(self, svg, text, link_url, degrees):
         b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
         html = f'<center> <img src="data:image/svg+xml;base64,%s"/> </center>' % b64
-        #st.write(html, unsafe_allow_html=True)
         st.markdown(f'<div style="background: repeating-linear-gradient({degrees}deg, transparent, transparent 15px, transparent 10px, #007db3 20px);color:black;border: solid 1px #e5e7eb; border-radius: 15px; text-align: center;padding: 1em;min-height: 60px;display: inline-block;box-sizing: border-box;width: 100%;" {html} <a target="parent"  href="{link_url}">{text}</a> </div>', unsafe_allow_html=True)       
+    
+    def _github_linkedin(self):
+        c1, c2 = st.columns(2)
+        with c1:
+            self._render_click_logos(svg = self.LINKEDIN_SVG, text = "LinkedIn", link_url = "https://www.linkedin.com/in/magne-sylju%C3%A5sen-35235738/", degrees = 45)
+        with c2:
+            self._render_click_logos(svg = self.GITHUB_SVG, text = "GitHub", link_url = "https://github.com/magnesyljuasen", degrees = 90)
         
     def __who_am_i(self):
         svg_education = self.SPEECH_SVG
@@ -104,8 +109,8 @@ class Portfolio:
                             "detail": {"offsetCenter": ["0%", "10%"]},
                             },
                         {
-                            "value": random.randint(1, 99),
-                            "name": "Commonly",
+                            "value": 40,
+                            "name": "Pandas",
                             "title": {"offsetCenter": ["0%", "30%"]},
                             "detail": {"offsetCenter": ["0%", "40%"]},
                             },
@@ -124,27 +129,26 @@ class Portfolio:
                     }
                 ]
             }
-        #st_echarts(option, height="500px", key="echarts")
+        st_echarts(option, height="300px", key="echarts")
         
         
     def main(self):
         self.set_streamlit_settings()
-        #self.__render_svg(svg = self.MAIL_SVG, text = "msylju@gmail.com")
-        #self.__render_svg(svg = self.PHONE_SVG, text = "451 925 40")
-        #self.__render_svg(svg = self.LOCATION_SVG, text = "Trondheim, Norge")
+#        with st.sidebar:
+#            self._render_svg(svg = self.MAIL_SVG, text = "msylju@gmail.com")
+#            self._render_svg(svg = self.PHONE_SVG, text = "451 925 40")
+#            self._render_svg(svg = self.LOCATION_SVG, text = "Trondheim, Norge")
+#            self._render_click_logos(svg = self.LINKEDIN_SVG, text = "LinkedIn", link_url = "https://www.linkedin.com/in/magne-sylju%C3%A5sen-35235738/", degrees = 45)
+#            self._render_click_logos(svg = self.GITHUB_SVG, text = "GitHub", link_url = "https://github.com/magnesyljuasen", degrees = 90)
+        
         st.title("Hei👋 Jeg er Magne Syljuåsen")
         self.__who_am_i()
         #--
-        st.write("")
-        c1, c2 = st.columns(2)
-        with c1:
-            self.__render_click_logos(svg = self.LINKEDIN_SVG, text = "LinkedIn", link_url = "https://www.linkedin.com/in/magne-sylju%C3%A5sen-35235738/", degrees = 45)
-        with c2:
-            self.__render_click_logos(svg = self.GITHUB_SVG, text = "GitHub", link_url = "https://github.com/magnesyljuasen", degrees = 90)
-        st.write("")
         st.header("Prosjekter")
-        with st.expander("Bergvarmekalkulatoren"):
-            st.write(""" Bergvarmekalkulatoren er et egenutviklet digitalt verktøy 
+        with st.popover("Bergvarmekalkulatoren", use_container_width=True):
+            st.header("Bergvarmekalkulatoren")
+            st.write(""" 
+                     Bergvarmekalkulatoren er et egenutviklet digitalt verktøy 
                      som gjør det enkelt å få en pekepinn på størrelsen, 
                      lønnsomhet og miljøgevinst for et bergvarmeanlegg (energibrønn med varmepumpe) 
                      til småhus. """)
@@ -155,28 +159,34 @@ class Portfolio:
                      på å øke kompetansen hos kunden, skape mer oppmerksomhet 
                      rundt bergvarme, og anbefale kunder å velge kvalitetssikrete 
                      installatørbedrifter som er en del av NOVAPs godkjenningsordning. """)
+            st.markdown(f'<a target="parent" style="font-size: 1.0rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.varmepumpeinfo.no/bergvarme/kalkulator">Tjenesten er solgt til NOVAP og ligger ute på varmepumpeinfo.no.</a>', unsafe_allow_html=True)
             image = Image.open('src/data/bergvarmekalkulatoren_showcase_2.png')
-            st.image(image)
-        with st.expander("Energy Plan Zero"):
+            st.image(image, use_column_width=True)
+        with st.popover("Energy Plan Zero", use_container_width=True):
             st.write("Kommer ...")
-        with st.expander("Intern webside for grunnvarmegruppa"):
+            st.markdown(f'<a target="parent" style="font-size: 1.0rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.av-energiplanlegging.no">Tjenesten er solgt til NOVAP og ligger ute på varmepumpeinfo.no.</a>', unsafe_allow_html=True)
+            
+        with st.popover("Intern webside for grunnvarmegruppa", use_container_width=True):
             st.write("Kommer ...")
         self.ring_gauge()
+        
+        st.header("Prosjekter")
         
         st.write("")
         c1, c2 = st.columns(2)
         with c1:
             st.subheader("Skills")
-            self.__render_svg(svg = self.CODING_SVG, text = "Programmerer i Python. Benytter meg mye av Streamlit, Numpy og Pandas. Bruker GitHub, Visual Studio Code og Azure DevOps.")
-            self.__render_svg(svg = self.GIS_SVG, text = "Jobbet mye med ArcGIS, og i tillegg open-source GIS-tjenester som GeoPandas, Shapely og Folium.")
+            self._render_svg(svg = self.CODING_SVG, text = "Programmerer i Python. Benytter meg mye av Streamlit, Numpy og Pandas. Bruker GitHub, Visual Studio Code og Azure DevOps.")
+            self._render_svg(svg = self.GIS_SVG, text = "Jobbet mye med ArcGIS, og i tillegg open-source GIS-tjenester som GeoPandas, Shapely og Folium.")
         with c2:
             st.subheader("Om meg")
-            self.__render_svg(svg = self.EDUCATION_SVG, text = "Utdannet sivilingeniør innen tekniske geofag fra Norges teknisk-naturvitenskapelige universitet (NTNU)")
-            self.__render_svg(svg = self.LIFE_SVG, text = "Samboer med Emma.")
-            self.__render_svg(svg = self.SPORTS_SVG, text = "Har spillt fotball aktivt i 20 år. Driver i dag med fotball på hobbybasis, og er nysgjerrig på andre idretter.")
-            self.__render_svg(svg = self.MUSIC_SVG, text = "Liker å synge og spille gitar.")
+            self._render_svg(svg = self.EDUCATION_SVG, text = "Utdannet sivilingeniør innen tekniske geofag fra Norges teknisk-naturvitenskapelige universitet (NTNU)")
+            self._render_svg(svg = self.LIFE_SVG, text = "Samboer med Emma.")
+            self._render_svg(svg = self.SPORTS_SVG, text = "Har spillt fotball aktivt i 20 år. Driver i dag med fotball på hobbybasis, og er nysgjerrig på andre idretter.")
+            self._render_svg(svg = self.MUSIC_SVG, text = "Liker å synge og spille gitar.")
         
         st.write("")
+        self._github_linkedin()
         st_lottie("https://lottie.host/65eb2703-6b4a-4b22-a022-e7051369ca74/G6txfabyKf.json")
         
 if __name__ == "__main__":

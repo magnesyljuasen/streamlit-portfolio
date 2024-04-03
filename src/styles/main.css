@@ -13,7 +13,7 @@ a {
 }
 
 a:hover {
-    color: #730051 !important;
+    color: #0087c0 !important;
     text-decoration: none;
 }
 
@@ -135,6 +135,12 @@ div.stButton > button:first-child {
     padding: 30px;
     border-radius: 25px;
     border: 1px groove #005173;
+}
+
+[data-testid="column"] {
+  border-radius: 15px;
+  padding: 10px;
+  text-align: left;
 }
 
 MainMenu {visibility: hidden;}
