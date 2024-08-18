@@ -28,6 +28,7 @@ class Portfolio:
         self.MATH_SVG = """<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#dddddd"><path fill="#dddddd" d="M14 16.5c0 .83-.67 1.5-1.5 1.5h-7c-.83 0-1.5-.67-1.5-1.5 0-.293.095-.566.25-.814.443-.707.855-1.433 1.272-2.157l1.38-2.405c.364-.636.73-1.27 1.088-1.91.02-.038.256-.385.23-.425l-.443-.72-1.045-1.697-1.22-1.986-.84-1.36c-.246-.4-.578-.815-.65-1.292-.05-.338.01-.695.185-.992C4.49.258 5.02-.003 5.572 0H13c.55 0 1 .45 1 1s-.45 1-1 1H7.57l.59.983c.415.693.83 1.387 1.247 2.08l1.13 1.887c.197.33.472.673.454 1.074-.01.27-.13.517-.273.74-.35.55-.672 1.12-1.004 1.68L8.275 12.87l-1.092 1.84c-.016.025-.142.29-.173.29h5.49c.83 0 1.5.67 1.5 1.5z"/><path fill="#dddddd" d="M4.83 11.55c-.19.29-.51.45-.83.45-.19 0-.38-.05-.55-.17l-3-2c-.01-.01-.02-.01-.02-.02-.1-.06-.19-.15-.26-.26-.31-.45-.18-1.08.28-1.38l3-2c.45-.31 1.07-.18 1.382.28.31.45.18 1.08-.28 1.38L2.8 9l1.75 1.17c.46.3.59.92.28 1.38zM13.17 11.55c.19.29.51.45.83.45.19 0 .38-.05.55-.17l3-2c.01-.01.02-.01.02-.02.1-.06.19-.15.26-.26.31-.45.18-1.08-.28-1.38l-3-2c-.45-.31-1.07-.18-1.382.28-.31.45-.18 1.08.28 1.38L15.198 9l-1.75 1.17c-.46.3-.59.92-.28 1.38z"/></svg>"""
         self.PYTHON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#dddddd"><path d="M6 2.5H7M4.5 4V1.5C4.5 0.947715 4.94772 0.5 5.5 0.5H9.5C10.0523 0.5 10.5 0.947715 10.5 1.5V6.5C10.5 7.05228 10.0523 7.5 9.5 7.5H5.5C4.94772 7.5 4.5 7.94772 4.5 8.5V13.5C4.5 14.0523 4.94772 14.5 5.5 14.5H9.5C10.0523 14.5 10.5 14.0523 10.5 13.5V11M8 4.5H1.5C0.947715 4.5 0.5 4.94772 0.5 5.5V10.5C0.5 11.0523 0.947715 11.5 1.5 11.5H4.5M7 10.5H13.5C14.0523 10.5 14.5 10.0523 14.5 9.5V4.5C14.5 3.94772 14.0523 3.5 13.5 3.5H10.5M8 12.5H9" stroke="#000000"/></svg>"""
         self.API_SVG = """<svg xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" viewBox="0 0 24 24" fill="#dddddd"/><path d="M20,6H4A2,2,0,0,0,2,8v8a2,2,0,0,0,2,2H20a2,2,0,0,0,2-2V8A2,2,0,0,0,20,6ZM9.29,14.8,9,13.73H7.16L6.87,14.8H5.17L7,9.07H9.09L11,14.8Zm6.34-3.14a1.7,1.7,0,0,1-.36.64,1.82,1.82,0,0,1-.67.44,2.75,2.75,0,0,1-1,.17h-.44V14.8H11.6V9.09h2a2.43,2.43,0,0,1,1.62.47,1.67,1.67,0,0,1,.55,1.35A2.36,2.36,0,0,1,15.63,11.66Zm2.58,3.14H16.66V9.09h1.55ZM8.45,11.53l.24.93H7.48l.24-.93c0-.13.08-.28.12-.47s.09-.38.13-.57a4.63,4.63,0,0,0,.1-.48c0,.13.07.29.11.5l.15.58Zm5.59-1a.57.57,0,0,1,.16.43.75.75,0,0,1-.11.42.59.59,0,0,1-.27.22.9.9,0,0,1-.37.07h-.31V10.34h.4A.63.63,0,0,1,14,10.51Z" fill-rule="evenodd"/></svg>"""
+    
     def set_streamlit_settings(self):
         st.set_page_config(
         page_title="Magne Syljuåsen",
@@ -73,10 +74,10 @@ class Portfolio:
         svg_education = self.SPEECH_SVG
         b64 = base64.b64encode(svg_education.encode('utf-8')).decode("utf-8")
         html = f'''<medium> <img src="data:image/svg+xml;base64,%s"/> 
-        Sivilingeniør fra NTNU, og jobber som rådgiver innen grunnvarme i Asplan Viak.
-        Er nysgjerrig på teknologi og er optatt av hvordan det kan bidra til å utvikle bærekraftige 
-        løsninger samt effektivisere repetetive oppgaver. Jobber i dag mye med energianalyser i Python for å 
-        vurdere potensial for energieffektiviseringstiltak i den norske bygningsmassen. </medium> ''' % b64
+        Sivilingeniør fra NTNU, og jobber i dag som rådgiver innen bergvarme i Asplan Viak. 
+        Er nysgjerrig på teknologi og er optatt av hvordan det kan bidra til å skape nye løsninger
+        samt effektivisere arbeidsoppgaver. Jobber i dag mye med Python (backend) og Streamlit (frontend) for å 
+        lage ulike verktøy knyttet til helhetlig energiplanlegging og bergvarme. </medium> ''' % b64
         st.write(html, unsafe_allow_html=True)
         
     def ring_gauge(self):
@@ -147,12 +148,9 @@ class Portfolio:
         st.title("Hei! Jeg er Magne Syljuåsen")
         self.__who_am_i()
         #--
-        st.header("Prosjekter", divider=True)
-        video_file = open('video.mp4', 'rb')
-        video_bytes = video_file.read()
-        st.video(video_bytes, subtitles="subtitles.vtt")
-        with st.popover("Bergvarmekalkulatoren", use_container_width=True):
-            st.subheader("Bergvarmekalkulatoren")
+        st.header("Prosjekter")
+        
+        with st.expander("Bergvarmekalkulatoren"):
             st.write(""" 
                      Bergvarmekalkulatoren er et egenutviklet digitalt verktøy 
                      som gjør det enkelt å få en pekepinn på størrelsen, 
@@ -166,28 +164,23 @@ class Portfolio:
                      rundt bergvarme, og anbefale kunder å velge kvalitetssikrete 
                      installatørbedrifter som er en del av NOVAPs godkjenningsordning. """)
             st.markdown(f'<a target="parent" style="font-size: 1.1rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.varmepumpeinfo.no/bergvarme/kalkulator">Tjenesten ligger ute på varmepumpeinfo.no. Prøv den her!</a>', unsafe_allow_html=True)
-#            image = Image.open('src/data/bergvarmekalkulatoren_showcase_2.png')
-#            st.image(image, use_column_width=True)
-        with st.popover("Energy Plan Zero", use_container_width=True):
-            st.subheader("Energy Plan Zero")
+        with st.expander("Energy Plan Zero"):
             st.write("""
                      Energy Plan Zero (AV Energiplanlegging) er en samling verktøy utviklet av 
                      Asplan Viak til å beregne energi og effektbehov til en 
                      bygningsmasse. Alt fra nabolag opp til hele kommuner og fylker. 
-                     Verkøyene kan brukes til å finne de beste energiforsyningsløsningene, 
-                     klimagassutslipp, kostnader, flaskehalser og hvordan disse kan løses. 
+                     Verktøyene kan brukes til å finne de beste energiforsyningsløsningene, 
+                     mtp. klimagassutslipp, kostnader, flaskehalser og hvordan disse kan løses. 
                      """)
-            st.write("Jeg har sammen med en annen utvikler implementert metoden.")
             st.markdown(f'<a target="parent" style="font-size: 1.1rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.av-energiplanlegging.no">Les mer om verktøyene her.</a>', unsafe_allow_html=True)
             
-        with st.popover("Internside for grunnvarmegruppa", use_container_width=True):
-            st.subheader("Internside for grunnvarmegruppa")
+        with st.expander("Internside for grunnvarmegruppa"):
             st.write("""
                      Internsiden for grunnvarmegruppa er ment som en 
                      intern samhandlingsplattform for å forenkle, forbedre 
                      og effektivisere repetetive arbeidsoppgaver.""")
         self.ring_gauge()
-        st.header("Skills", divider=True)
+        st.header("Skills")
         c1, c2 = st.columns(2)
         with c1:
             self._render_svg(svg=self.CODING_SVG, text="Kildekodehåndtering i GitHub og Azure DevOps.")
@@ -198,13 +191,13 @@ class Portfolio:
             self._render_svg(svg=self.PYTHON_SVG, text=""" Python og MATLAB.""")
             self._render_svg(svg=self.PYTHON_SVG, text=""" Streamlit. CSS, HTML.""")
             self._render_svg(svg=self.API_SVG, text=""" .""")
-        st.header("Om meg", divider=True)
+        st.header("Om meg")
         c1, c2 = st.columns(2)
         with c1:
             self._render_svg(svg = self.EDUCATION_SVG, text = "Utdannet sivilingeniør innen tekniske geofag fra Norges teknisk-naturvitenskapelige universitet (NTNU).")
-            self._render_svg(svg = self.LIFE_SVG, text = "Samboer med Emma som studerer til å bli grunnskolelærer.")
+            self._render_svg(svg = self.LIFE_SVG, text = "Samboer med Emma som er lektor i realfag.")
         with c2:
-            self._render_svg(svg = self.SPORTS_SVG, text = "Har spillt fotball i 20 år. Driver i dag med fotball på hobbybasis, og er nysgjerrig på andre idretter.")
+            self._render_svg(svg = self.SPORTS_SVG, text = "Liker å være aktiv og har spillt fotball i 20 år.")
             self._render_svg(svg = self.MUSIC_SVG, text = "Liker å synge og spille gitar. Er med i koret på jobben, og akkompagnerte med gitar på sommerfesten og julebordet i år.")
         
         self._github_linkedin_cv()
