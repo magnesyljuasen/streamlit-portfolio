@@ -161,7 +161,7 @@ class Portfolio:
         self._github_linkedin_cv()
         st.header("Prosjekter")
         
-        with st.expander("Bergvarmekalkulatoren"):
+        with st.expander("Bergvarmekalkulatoren", expanded=True):
             st.write(""" 
                      Bergvarmekalkulatoren er et egenutviklet digitalt verktøy 
                      som gjør det enkelt å få en pekepinn på størrelsen, 
@@ -178,7 +178,7 @@ class Portfolio:
             st.image("src/data/bergvarmekalkulator_showcase.png")
             st.image("src/data/bergvarmekalkulator_showcase_2.png")
             st.image("src/data/bergvarmekalkulator_showcase_3.png")
-        with st.expander("Energy Plan Zero"):
+        with st.expander("Energy Plan Zero", expanded=True):
             st.write("""
                      Energy Plan Zero (AV Energiplanlegging) er en samling verktøy utviklet av 
                      Asplan Viak til å beregne energi og effektbehov til en 
@@ -192,7 +192,7 @@ class Portfolio:
             st.image("src/data/kildrift_showcase.png")
             st.image("src/data/melhus_showcase.png")
 
-        with st.expander("Internside for energiforsyning"):
+        with st.expander("Internside for energiforsyning", expanded=True):
             st.write("""
                      Internside for de som jobber med energiforsyningsløsninger er en 
                      intern samhandlingsplattform for å forenkle, forbedre 
@@ -204,17 +204,17 @@ class Portfolio:
             st.image("src/data/internside_showcase_4.png")
             st.image("src/data/internside_showcase_3.png")
         self.ring_gauge()
-        st.header("Skills")
-        c1, c2 = st.columns(2)
-        with c1:
-            self._render_svg(svg=self.CODING_SVG, text="Kildekodehåndtering i GitHub og Azure DevOps.")
-            self._render_svg(svg=self.ARCGIS_SVG, text="""ArcGIS der jeg bla. har vært med å lage flere Python-toolboxer til Arcgis Pro samt utviklet low-code apper i ArcGIS Online. """)
-            self._render_svg(svg=self.GIS_SVG, text="""Open-source GIS-tjenester som Folium (2D) og Pydeck (3D). GeoPandas, Pandas, Shapely og Fiona for geografisk dataprosessering.""")
-        with c2:
-            self._render_svg(svg=self.PYTHON_SVG, text=""" Bred erfaring med Python, og da særlig pakkene numpy, pandas, matplotlib og plotly. """)
-            self._render_svg(svg=self.PYTHON_SVG, text=""" Python og MATLAB.""")
-            self._render_svg(svg=self.PYTHON_SVG, text=""" Streamlit. CSS, HTML.""")
-            self._render_svg(svg=self.API_SVG, text=""" .""")
+#        st.header("Skills")
+#        c1, c2 = st.columns(2)
+#        with c1:
+#            self._render_svg(svg=self.CODING_SVG, text="Kildekodehåndtering i GitHub og Azure DevOps.")
+#            self._render_svg(svg=self.ARCGIS_SVG, text="""ArcGIS der jeg bla. har vært med å lage flere Python-toolboxer til Arcgis Pro samt utviklet low-code apper i ArcGIS Online. """)
+#            self._render_svg(svg=self.GIS_SVG, text="""Open-source GIS-tjenester som Folium (2D) og Pydeck (3D). GeoPandas, Pandas, Shapely og Fiona for geografisk dataprosessering.""")
+#        with c2:
+#            self._render_svg(svg=self.PYTHON_SVG, text=""" Bred erfaring med Python, og da særlig pakkene numpy, pandas, matplotlib og plotly. """)
+#            self._render_svg(svg=self.PYTHON_SVG, text=""" Python og MATLAB.""")
+#            self._render_svg(svg=self.PYTHON_SVG, text=""" Streamlit. CSS, HTML.""")
+#            self._render_svg(svg=self.API_SVG, text=""" .""")
         st.header("Om meg")
         c1, c2 = st.columns(2)
         with c1:
