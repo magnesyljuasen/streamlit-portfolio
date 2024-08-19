@@ -55,11 +55,21 @@ class Portfolio:
         b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
         html = f'<img src="data:image/svg+xml;base64,%s"/> {text}' % b64
         st.markdown(html, unsafe_allow_html=True)
-    
+
     def _render_click_logos(self, svg, text, link_url, degrees):
         b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
         html = f'<center> <img src="data:image/svg+xml;base64,%s"/> </center>' % b64
-        st.markdown(f'<div style="background: repeating-linear-gradient({degrees}deg, transparent, transparent 15px, transparent 10px, #007db3 20px);color:black;border: solid 1px #e5e7eb; border-radius: 15px; text-align: center;padding: 1em;min-height: 60px;display: inline-block;box-sizing: border-box;width: 100%;" {html} <a target="parent"  href="{link_url}">{text}</a> </div>', unsafe_allow_html=True)       
+        st.markdown(f'''<div style="background: #f5f5f5;
+                    color: #f5f5f5;
+                    border: solid 1px #e5e7eb; 
+                    border-radius: 15px; 
+                    text-align: center;
+                    padding: 1em;
+                    min-height: 60px;
+                    display: inline-block;
+                    box-sizing: border-box;
+                    width: 100%;" 
+                    {html} <a target="parent" href="{link_url}">{text}</a> </div>''', unsafe_allow_html=True)       
     
     def _github_linkedin_cv(self):
         c1, c2, c3 = st.columns(3)
@@ -68,7 +78,7 @@ class Portfolio:
         with c2:
             self._render_click_logos(svg = self.GITHUB_SVG, text = "GitHub", link_url = "https://github.com/magnesyljuasen", degrees = 90)
         with c3:
-            self._render_click_logos(svg = self.CODING_SVG, text = "CV", link_url = "https://github.com/magnesyljuasen", degrees = 135)
+            self._render_click_logos(svg = self.CODING_SVG, text = "CV", link_url = "https://github.com/magnesyljuasen/streamlit-portfolio/blob/main/CV.pdf", degrees = 135)
         
     def __who_am_i(self):
         svg_education = self.SPEECH_SVG
@@ -148,6 +158,7 @@ class Portfolio:
         st.title("Hei! Jeg er Magne Syljuåsen")
         self.__who_am_i()
         #--
+        self._github_linkedin_cv()
         st.header("Prosjekter")
         
         with st.expander("Bergvarmekalkulatoren"):
@@ -164,6 +175,9 @@ class Portfolio:
                      rundt bergvarme, og anbefale kunder å velge kvalitetssikrete 
                      installatørbedrifter som er en del av NOVAPs godkjenningsordning. """)
             st.markdown(f'<a target="parent" style="font-size: 1.1rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.varmepumpeinfo.no/bergvarme/kalkulator">Tjenesten ligger ute på varmepumpeinfo.no. Prøv den her!</a>', unsafe_allow_html=True)
+            st.image("src/data/bergvarmekalkulator_showcase.png")
+            st.image("src/data/bergvarmekalkulator_showcase_2.png")
+            st.image("src/data/bergvarmekalkulator_showcase_3.png")
         with st.expander("Energy Plan Zero"):
             st.write("""
                      Energy Plan Zero (AV Energiplanlegging) er en samling verktøy utviklet av 
@@ -173,12 +187,22 @@ class Portfolio:
                      mtp. klimagassutslipp, kostnader, flaskehalser og hvordan disse kan løses. 
                      """)
             st.markdown(f'<a target="parent" style="font-size: 1.1rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.av-energiplanlegging.no">Les mer om verktøyene her.</a>', unsafe_allow_html=True)
-            
-        with st.expander("Internside for grunnvarmegruppa"):
+            st.image("src/data/kringsjå_showcase.png")
+            st.image("src/data/tempe_showcase.png")
+            st.image("src/data/kildrift_showcase.png")
+            st.image("src/data/melhus_showcase.png")
+
+        with st.expander("Internside for energiforsyning"):
             st.write("""
-                     Internsiden for grunnvarmegruppa er ment som en 
+                     Internside for de som jobber med energiforsyningsløsninger er en 
                      intern samhandlingsplattform for å forenkle, forbedre 
-                     og effektivisere repetetive arbeidsoppgaver.""")
+                     og effektivisere repetetive arbeidsoppgaver. 
+                     Her vises noen skjermbilder av løsningene som finnes:""")
+            st.image("src/data/internside_showcase.png")
+            st.image("src/data/internside_showcase_5.png")
+            st.image("src/data/internside_showcase_2.png")
+            st.image("src/data/internside_showcase_4.png")
+            st.image("src/data/internside_showcase_3.png")
         self.ring_gauge()
         st.header("Skills")
         c1, c2 = st.columns(2)
@@ -187,7 +211,7 @@ class Portfolio:
             self._render_svg(svg=self.ARCGIS_SVG, text="""ArcGIS der jeg bla. har vært med å lage flere Python-toolboxer til Arcgis Pro samt utviklet low-code apper i ArcGIS Online. """)
             self._render_svg(svg=self.GIS_SVG, text="""Open-source GIS-tjenester som Folium (2D) og Pydeck (3D). GeoPandas, Pandas, Shapely og Fiona for geografisk dataprosessering.""")
         with c2:
-            self._render_svg(svg=self.MATH_SVG, text=""" Bred erfaring med Numpy og Pandas.""")
+            self._render_svg(svg=self.PYTHON_SVG, text=""" Bred erfaring med Python, og da særlig pakkene numpy, pandas, matplotlib og plotly. """)
             self._render_svg(svg=self.PYTHON_SVG, text=""" Python og MATLAB.""")
             self._render_svg(svg=self.PYTHON_SVG, text=""" Streamlit. CSS, HTML.""")
             self._render_svg(svg=self.API_SVG, text=""" .""")
@@ -200,8 +224,7 @@ class Portfolio:
             self._render_svg(svg = self.SPORTS_SVG, text = "Liker å være aktiv og har spillt fotball i 20 år.")
             self._render_svg(svg = self.MUSIC_SVG, text = "Liker å synge og spille gitar. Er med i koret på jobben, og akkompagnerte med gitar på sommerfesten og julebordet i år.")
         
-        self._github_linkedin_cv()
-#        st_lottie("https://lottie.host/65eb2703-6b4a-4b22-a022-e7051369ca74/G6txfabyKf.json")
+        st_lottie("https://lottie.host/65eb2703-6b4a-4b22-a022-e7051369ca74/G6txfabyKf.json")
         
 if __name__ == "__main__":
     portfolio = Portfolio()
