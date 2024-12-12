@@ -10,7 +10,7 @@ import streamlit as st
 ### App start ###
 st.set_page_config(
     page_title="Magne Syljuåsen",
-    page_icon="src/img/logo-4.png",
+    page_icon="src/img/logo-hand.png",
     layout="wide",
     initial_sidebar_state="collapsed"
     )
@@ -18,8 +18,8 @@ st.set_page_config(
 with open("src/styles/main.css") as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 
-main_body_logo = "src/img/logo-4.png"
-sidebar_logo = "src/img/logo-4.png"
+main_body_logo = "src/img/logo-hand.png"
+sidebar_logo = "src/img/logo-hand.png"
 
 st.logo(sidebar_logo, icon_image=main_body_logo, size='large')
 
