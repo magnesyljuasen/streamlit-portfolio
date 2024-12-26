@@ -49,7 +49,7 @@ with tab1:
         dict(
             title="",
             text="",
-            img="src/data/bergvarmekalkulator_showcase.png"
+            img="src/data/bergvarmekalkulator_showcase.png",
         ),
         dict(
             title="",
@@ -67,7 +67,7 @@ with tab1:
                 Verktøyene kan brukes til å finne de beste energiforsyningsløsningene, 
                 mtp. klimagassutslipp, kostnader, flaskehalser og hvordan disse kan løses. 
                 """)
-    st.markdown(f'<a target="parent" style="font-size: 1.1rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.av-energiplanlegging.no">Les mer om verktøyene her.</a>', unsafe_allow_html=True)
+    st.markdown(f'<a target="parent" style="font-size: 1.1rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.asplanviak.no/verktoy/av-energiplanlegging/">Les mer om verktøyene her.</a>', unsafe_allow_html=True)
     items = [
         dict(
             title="",
@@ -136,13 +136,12 @@ with tab2:
     render_svg(svg=GIS_SVG, text=""" Open-source GIS-tjenester som Folium (2D) og Pydeck (3D). GeoPandas, pandas og shapely for geografisk dataprosessering.""")
     render_svg(svg=FRONTEND_SVG, text=""" Frontend-utvikling med Streamlit, CSS og HTML. Har også brukt low-code-plattformen Webflow.""")
     render_svg(svg=ARCGIS_SVG, text=""" ArcGIS for å lage flere Python-toolboxer til Arcgis Pro samt utvikling av low-code apper i ArcGIS Online. """)
+    render_svg(svg=BERGVARME_SVG, text=""" Earth Energy Designer og Pygfunction for å dimensjonere brønnparker og GeoTermos-systemer.""") 
     render_svg(svg=AUTOCAD_SVG, text=""" AutoCAD for prosjektering av brønner i byggetegninger. """)
     render_svg(svg=SOURCE_SVG, text=" GitHub og Azure DevOps for kildekodehåntering.")
     render_svg(svg=AI_SVG, text=""" ChatGPT som jeg bruker i det daglige for tekst og kode. """)
     render_svg(svg=MICROSOFT_SVG, text=""" MS Office for dagligdagse oppgaver med Word, PowerPoint og Excel. """)
-    render_svg(svg=BERGVARME_SVG, text=""" Earth Energy Designer og Pygfunction for å dimensjonere brønnparker og GeoTermos-systemer.""")
-    
-    render_svg(svg=PROGRAMMING_SVG, text=""" Andre programmeringspråk som MATLAB, C++, JavaScript og React der jeg har begrenset med erfaring.""")
+    render_svg(svg=PROGRAMMING_SVG, text=""" Programmeringspråk som MATLAB, C++, JavaScript og React der jeg har litt erfaring.""")
     st.write('Jeg er alltid interessert i å lære meg nye teknologier :-)')
     
 with tab3:
