@@ -1,6 +1,12 @@
 import base64
 import streamlit as st 
 
+def render_svg(svg, text):
+    b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
+    html = f'<img src="data:image/svg+xml;base64,%s"/> {text}' % b64
+    st.markdown(html, unsafe_allow_html=True)
+    #st.markdown(text)
+
 def render_click_logos(svg, text, link_url):
     b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
     html = f'<center> <img src="data:image/svg+xml;base64,%s"/> </center>' % b64
