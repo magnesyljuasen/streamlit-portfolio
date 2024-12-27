@@ -1,9 +1,8 @@
 import streamlit as st
 from utilities import render_click_logos, render_svg
 from streamlit_carousel import carousel
-import pandas as pd
 
-#https://www.svgrepo.com/
+# SVG
 GITHUB_SVG = """ <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#36454f"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 6c-3.313 0-6 2.686-6 6 0 2.651 1.719 4.9 4.104 5.693.3.056.396-.13.396-.289v-1.117c-1.669.363-2.017-.707-2.017-.707-.272-.693-.666-.878-.666-.878-.544-.373.041-.365.041-.365.603.042.92.619.92.619.535.917 1.403.652 1.746.499.054-.388.209-.652.381-.802-1.333-.152-2.733-.667-2.733-2.965 0-.655.234-1.19.618-1.61-.062-.153-.268-.764.058-1.59 0 0 .504-.161 1.65.615.479-.133.992-.199 1.502-.202.51.002 1.023.069 1.503.202 1.146-.776 1.648-.615 1.648-.615.327.826.121 1.437.06 1.588.385.42.617.955.617 1.61 0 2.305-1.404 2.812-2.74 2.96.216.186.412.551.412 1.111v1.646c0 .16.096.347.4.288 2.383-.793 4.1-3.041 4.1-5.691 0-3.314-2.687-6-6-6z"/></svg>"""
 LINKEDIN_SVG = """ <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#36454f"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1.008-1 1.008s-1-.45-1-1.008c0-.557.447-1.008 1-1.008s1 .452 1 1.008zm0 2h-2v6h2v-6zm3 0h-2v6h2v-2.861c0-1.722 2.002-1.881 2.002 0v2.861h1.998v-3.359c0-3.284-3.128-3.164-4-1.548v-1.093z"/></svg>"""
 CODING_SVG = """ <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#36454f"><path d="M21 3c0-1.657-1.343-3-3-3s-3 1.343-3 3c0 1.323.861 2.433 2.05 2.832.168 4.295-2.021 4.764-4.998 5.391-1.709.36-3.642.775-5.052 2.085v-7.492c1.163-.413 2-1.511 2-2.816 0-1.657-1.343-3-3-3s-3 1.343-3 3c0 1.305.837 2.403 2 2.816v12.367c-1.163.414-2 1.512-2 2.817 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.295-.824-2.388-1.973-2.808.27-3.922 2.57-4.408 5.437-5.012 3.038-.64 6.774-1.442 6.579-7.377 1.141-.425 1.957-1.514 1.957-2.803zm-16.8 0c0-.993.807-1.8 1.8-1.8s1.8.807 1.8 1.8-.807 1.8-1.8 1.8-1.8-.807-1.8-1.8zm3.6 18c0 .993-.807 1.8-1.8 1.8s-1.8-.807-1.8-1.8.807-1.8 1.8-1.8 1.8.807 1.8 1.8z"/></svg>"""
@@ -18,49 +17,52 @@ AUTOCAD_SVG = """<svg fill="#36454f" width="30px" height="30px" viewBox="-10.56 
 MICROSOFT_SVG = """<svg width="30px" height="30px" viewBox="-23.04 -23.04 238.08 238.08" xmlns="http://www.w3.org/2000/svg" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path stroke="#36454f" stroke-width="8.256" d="M102.379 22.587c6.613 1.89 11.179 7.95 11.188 14.851v10.84L74.248 62.541a10.69 10.69 0 0 0-6.996 10.03v36.288a10.675 10.675 0 0 1-5.51 9.371l-12.188 6.606c-5.22 2.841-11.569-.963-11.554-6.924v-55.15a14.935 14.935 0 0 1 7.508-12.968l45-25.763A15.58 15.58 0 0 1 98.16 22a15.011 15.011 0 0 1 4.218.586Zm0 0c6.616 1.888 11.18 7.946 11.188 14.85v117.269c.019 6.82-4.485 12.82-11.022 14.682l41.667-11.908c6.382-1.846 10.779-7.704 10.788-14.369V48.86c.003-6.683-4.415-12.556-10.819-14.384l-41.802-11.889Zm11.188 114.994H67.084c-7.964.086-10.752 10.647-3.875 14.68l27.688 15.757A15.08 15.08 0 0 0 98.381 170a14.534 14.534 0 0 0 4.168-.612c6.535-1.863 11.037-7.862 11.018-14.68v-17.127Z"></path></g></svg>"""
 LEARNING_SVG = """<svg width="30px" height="30px" viewBox="-12.8 -12.8 89.60 89.60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#36454f" stroke-width="3.3920000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><polygon points="32 36 8 24 32 12 56 24 32 36"></polygon><polyline points="48 28 48 52 16 52 16 28"></polyline><line x1="56" y1="24" x2="56" y2="44"></line></g></svg>"""
 BERGVARME_SVG = """<svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="30px" viewBox="-174.08 -174.08 860.16 860.16" xml:space="preserve" fill="#36454f" stroke="#36454f" stroke-width="6.656000000000001"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css">  .st0{fill:#36454f;}  </style> <g> <path class="st0" d="M506.391,287.074c-3.578-10.219-13.484-22-20.734-29.047c-17.188-16.672-35.688-25-44.75-29.875 c-6.75-4.047-15.313-1.594-19.188,5.484c-3.844,7.063-1.313,15.703,5.219,20.141c42.844,29.234,49.906,64.281,18.906,100.859 c-9.266,10.922-21.641,19.563-39.813,29.75c-29.734,16.656-91.094,31.313-150.031,31.234 c-58.938,0.078-120.297-14.578-150.031-31.234c-18.156-10.188-30.531-18.828-39.813-29.75c-31-36.578-23.938-71.625,18.938-100.859 c6.5-4.438,9.047-13.078,5.188-20.141c-3.844-7.078-12.438-9.531-19.156-5.484c-9.078,4.875-27.594,13.203-44.75,29.875 c-7.281,7.047-17.188,18.828-20.75,29.047C2.047,297.262,0,308.402,0,320.027c0,12.016,2.25,23.766,6.375,34.719 c7.219,19.203,19.766,35.828,35.563,50.047c23.781,21.313,55.188,37.719,91.656,49.219c36.484,11.453,78.125,17.844,122.406,17.844 s85.922-6.391,122.406-17.844c36.469-11.5,67.875-27.906,91.656-49.219c15.797-14.219,28.359-30.844,35.563-50.047 c4.125-10.953,6.391-22.703,6.375-34.719C512.016,308.402,509.953,297.262,506.391,287.074z"></path> <path class="st0" d="M239.5,314.074c7.031,15.563,15.969,25.781,22.75,31.281c6.906,5.516,12.406,7.266,16.656,4.859 c4.281-2.406,5.188-8.484,3.594-17.016c-1.594-8.578-5.156-18.859-7.609-31.172c-2.516-12.188-4.203-27.906-4.203-45.328 c0.063-8.547,0.719-17.094,2.438-25.578c1.688-8.531,4.594-17.016,8.547-27.516c3.953-10.438,8.203-22.75,10.297-35.031 c2.188-12.313,2.531-24.234,1.953-35.094c-1.328-21.406-5.563-40.516-12.594-56.141c-7.016-15.578-15.984-25.781-22.766-31.281 c-6.906-5.516-12.406-7.266-16.656-4.859c-4.281,2.406-5.172,8.5-3.563,17.016c1.594,8.594,5.156,18.859,7.609,31.172 c2.516,12.172,4.203,27.906,4.203,45.313c-0.063,8.547-0.719,17.094-2.438,25.578c-1.688,8.531-4.594,17.016-8.563,27.516 c-3.953,10.453-8.188,22.75-10.281,35.063c-2.188,12.297-2.563,24.219-1.953,35.078C228.234,279.34,232.469,298.449,239.5,314.074z "></path> <path class="st0" d="M329.094,278.465c2.063,8.656,4.938,16.734,8.438,23.719c7.094,14.141,15.938,22.828,22.469,27.266 c6.688,4.453,12,5.531,16.141,2.922s5.016-8.344,3.469-16.063c-1.516-7.781-4.906-16.797-7.109-27.313 c-2.281-10.375-3.781-24-3.563-39.078c0.156-7.359,0.906-14.578,2.625-21.703c1.719-7.172,4.578-14.344,8.594-23.563 c3.969-9.141,8.453-20.219,10.813-31.547c2.438-11.328,3-22.438,2.516-32.438c-0.516-10.047-1.859-19.016-3.922-27.719 c-2.063-8.641-4.938-16.719-8.453-23.703c-7.078-14.156-15.922-22.844-22.469-27.266c-6.688-4.453-12-5.531-16.141-2.922 s-5,8.328-3.469,16.063c1.531,7.766,4.922,16.797,7.125,27.297c2.281,10.375,3.781,24,3.563,39.063 c-0.188,7.359-0.922,14.578-2.656,21.703c-1.719,7.172-4.594,14.344-8.594,23.578c-4,9.141-8.469,20.234-10.813,31.563 c-2.438,11.344-2.984,22.438-2.5,32.422C325.688,260.793,327.031,269.762,329.094,278.465z"></path> <path class="st0" d="M129.625,278.465c2.063,8.656,4.938,16.734,8.469,23.719c7.094,14.141,15.906,22.828,22.469,27.266 c6.688,4.453,12,5.531,16.125,2.922c4.156-2.609,5.016-8.344,3.469-16.063c-1.516-7.766-4.906-16.797-7.125-27.313 c-2.281-10.375-3.781-24-3.563-39.078c0.172-7.359,0.922-14.578,2.656-21.703c1.703-7.172,4.547-14.344,8.578-23.563 c3.984-9.141,8.453-20.219,10.797-31.547c2.453-11.328,3.016-22.438,2.516-32.438c-0.516-10.047-1.859-19-3.891-27.719 c-2.063-8.641-4.969-16.719-8.469-23.703c-7.094-14.141-15.938-22.844-22.469-27.281c-6.688-4.453-12-5.516-16.156-2.906 c-4.125,2.609-5,8.328-3.438,16.063c1.516,7.766,4.891,16.781,7.094,27.297c2.281,10.375,3.781,24,3.563,39.063 c-0.188,7.359-0.922,14.578-2.656,21.703c-1.719,7.172-4.563,14.344-8.594,23.578c-3.969,9.141-8.453,20.234-10.813,31.563 c-2.422,11.328-2.984,22.438-2.484,32.422C126.25,260.793,127.578,269.762,129.625,278.465z"></path> </g> </g></svg>"""
+#https://www.svgrepo.com/
 
+# Start
 st.title('Hei! Jeg er Magne Syljuåsen')
 
-st.write(''' 
+st.write(""" 
          Sivilingeniør fra NTNU, og jobber som rådgiver innen bergvarme i Asplan Viak. 
          Har stor interesse for teknologi og er optatt av hvordan det kan bidra til å skape nye løsninger
          samt effektivisere arbeidsoppgaver. Jobber i dag mye med programmering i Python og Streamlit for å 
          lage ulike verktøy knyttet til helhetlig energiplanlegging og bergvarme. 
-         ''')
+         """)
 
 tab1, tab2, tab3 = st.tabs(['Tidligere prosjekter', 'Teknologier jeg bruker', 'Om meg'])
+
 with tab1:
     st.header('Bergvarmekalkulatoren')
-
     st.write(""" 
                 Bergvarmekalkulatoren er et egenutviklet digitalt verktøy 
                 som gjør det enkelt å få en pekepinn på størrelsen, 
                 lønnsomhet og miljøgevinst for et bergvarmeanlegg (energibrønn med varmepumpe) 
-                til småhus. """)
+                til småhus. 
+             """)
     st.write("""    
                 Hensikten med tjenesten er å gi huseier/anleggseier et begrep om 
                 nødvendig lengde på energibrønn for å få et velfungerende 
                 anlegg tilpasset husets varmebehov. Tjenesten vil være med 
                 på å øke kompetansen hos kunden, skape mer oppmerksomhet 
                 rundt bergvarme, og anbefale kunder å velge kvalitetssikrete 
-                installatørbedrifter som er en del av NOVAPs godkjenningsordning. """)
+                installatørbedrifter som er en del av NOVAPs godkjenningsordning. 
+             """)
     st.markdown(f'<a target="parent" style="font-size: 1.1rem; border-radius: 15px; text-align: left; padding: 0rem; min-height: 60px; display: inline-block; box-sizing: border-box; width: 100%; transition: background-color 0.3s;" href="https://www.varmepumpeinfo.no/bergvarme/kalkulator">Tjenesten ligger ute på varmepumpeinfo.no. Prøv den her!</a>', unsafe_allow_html=True)
     items = [
         dict(
             title="",
             text="",
-            img="src/data/bergvarmekalkulator_showcase.PNG",
+            img="src/img/bergvarmekalkulator_showcase.png",
             link="https://www.varmepumpeinfo.no/bergvarme/kalkulator",
         ),
         dict(
             title="",
             text="",
-            img="src/data/bergvarmekalkulator_showcase_3.PNG",
+            img="src/img/bergvarmekalkulator_showcase_3.png",
             link="https://www.varmepumpeinfo.no/bergvarme/kalkulator",
         ),
     ]
     carousel(items=items, container_height=600)
-
     st.header('AV-Energiplanlegging')
     st.write("""
                 AV Energiplanlegging er en samling verktøy utviklet av 
@@ -74,31 +76,29 @@ with tab1:
         dict(
             title="",
             text="",
-            img="src/data/kringsjå_showcase.PNG",
+            img="src/img/kringsjå_showcase.png",
             link="https://www.asplanviak.no/verktoy/av-energiplanlegging/",
         ),
         dict(
             title="",
             text="",
-            img="src/data/tempe_showcase.PNG",
+            img="src/img/tempe_showcase.png",
             link="https://www.asplanviak.no/verktoy/av-energiplanlegging/"
         ),
         dict(
             title="",
             text="",
-            img="src/data/kildrift_showcase.PNG",
+            img="src/img/kildrift_showcase.png",
             link="https://www.asplanviak.no/verktoy/av-energiplanlegging/"
         ),
         dict(
             title="",
             text="",
-            img="src/data/melhus_showcase.PNG",
+            img="src/img/melhus_showcase.png",
             link="https://www.asplanviak.no/verktoy/av-energiplanlegging/"
         ),
     ]
     carousel(items=items, container_height=600)
-
-
     st.header('AV-Energi')
     st.write("""
                 AV-Energi er en intern webside for de som jobber med rådgivning
@@ -110,31 +110,31 @@ with tab1:
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase.PNG",
+            img="src/img/internside_showcase.png",
             link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_5.PNG",
+            img="src/img/internside_showcase_5.png",
             link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_2.PNG",
+            img="src/img/internside_showcase_2.png",
             link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_4.PNG",
+            img="src/img/internside_showcase_4.png",
             link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_3.PNG",
+            img="src/img/internside_showcase_3.png",
             link='https://av-energi.azurewebsites.net/'
         )
     ]
@@ -159,19 +159,21 @@ with tab3:
     st.header('Om meg')
     c1, c2, c3 = st.columns(3)
     with c1:
-        st.image('src/personal-img/presentasjon.png', caption='Midt i en presentasjon for næringslivsforeningen i Stjørdal')
+        st.image('src/img/presentasjon.png', caption='Midt i en presentasjon for næringslivsforeningen i Stjørdal')
     with c2:
-        st.image('src/personal-img/påtur.png', caption='På fjelltur med min samboer Emma!')
+        st.image('src/img/påtur.png', caption='På fjelltur med min samboer Emma!')
     with c3:
-        st.image('src/personal-img/medhund.png', caption='Vanligvis er jeg ikke så god med hunder, men denne var veldig rolig:-) ')
+        st.image('src/img/medhund.png', caption='Vanligvis er jeg ikke så god med hunder, men denne var veldig rolig:-) ')
     
     c1, c2, c3 = st.columns(3)
     with c1:
-        st.image('src/personal-img/landslaget.png', caption='Toppen av fotballkarrieren - spilte på student-fotballlandslaget i EM i Portugal i 2018')
+        st.image('src/img/landslaget.png', caption='Toppen av fotballkarrieren - spilte på student-fotballlandslaget i EM i Portugal i 2018')
     with c2:
-        st.image('src/personal-img/idanmark.png', caption='På tur i København til mine hjemtrakter. Her bodde jeg i 8 år da jeg var barn.') 
+        st.image('src/img/idanmark.png', caption='På tur i København til mine hjemtrakter. Her bodde jeg i 8 år da jeg var barn.') 
     with c3:
-        st.image('src/personal-img/hytta.png', caption='Utsikten fra hytta på fjellet. Her er det godt å koble av!')
+        st.image('src/img/hytta.png', caption='Utsikten fra hytta på fjellet. Her er det godt å koble av!')
+
+# Footer 
 c1, c2, c3 = st.columns(3)
 with c1:
     render_click_logos(svg = LINKEDIN_SVG, text = "LinkedIn", link_url = "https://www.linkedin.com/in/magne-sylju%C3%A5sen-35235738/")
