@@ -50,13 +50,13 @@ with tab1:
             title="",
             text="",
             img="src/data/bergvarmekalkulator_showcase.png",
-            link=""
+            link="https://www.varmepumpeinfo.no/bergvarme/kalkulator",
         ),
         dict(
             title="",
             text="",
             img="src/data/bergvarmekalkulator_showcase_3.png",
-            link=""
+            link="https://www.varmepumpeinfo.no/bergvarme/kalkulator",
         ),
     ]
     carousel(items=items, container_height=600)
@@ -74,22 +74,26 @@ with tab1:
         dict(
             title="",
             text="",
-            img="src/data/kringsjå_showcase.png"
+            img="src/data/kringsjå_showcase.png",
+            link="https://www.asplanviak.no/verktoy/av-energiplanlegging/",
         ),
         dict(
             title="",
             text="",
-            img="src/data/tempe_showcase.png"
+            img="src/data/tempe_showcase.png",
+            link="https://www.asplanviak.no/verktoy/av-energiplanlegging/"
         ),
         dict(
             title="",
             text="",
-            img="src/data/kildrift_showcase.png"
+            img="src/data/kildrift_showcase.png",
+            link="https://www.asplanviak.no/verktoy/av-energiplanlegging/"
         ),
         dict(
             title="",
             text="",
-            img="src/data/melhus_showcase.png"
+            img="src/data/melhus_showcase.png",
+            link="https://www.asplanviak.no/verktoy/av-energiplanlegging/"
         ),
     ]
     carousel(items=items, container_height=600)
@@ -106,27 +110,32 @@ with tab1:
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase.png"
+            img="src/data/internside_showcase.png",
+            link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_5.png"
+            img="src/data/internside_showcase_5.png",
+            link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_2.png"
+            img="src/data/internside_showcase_2.png",
+            link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_4.png"
+            img="src/data/internside_showcase_4.png",
+            link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_3.png"
+            img="src/data/internside_showcase_3.png",
+            link='https://av-energi.azurewebsites.net/'
         )
     ]
     carousel(items=items, container_height=600)
