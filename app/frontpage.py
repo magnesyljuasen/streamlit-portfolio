@@ -49,13 +49,13 @@ with tab1:
         dict(
             title="",
             text="",
-            img="src/data/bergvarmekalkulator_showcase.png",
+            img="src/data/bergvarmekalkulator_showcase.PNG",
             link="https://www.varmepumpeinfo.no/bergvarme/kalkulator",
         ),
         dict(
             title="",
             text="",
-            img="src/data/bergvarmekalkulator_showcase_3.png",
+            img="src/data/bergvarmekalkulator_showcase_3.PNG",
             link="https://www.varmepumpeinfo.no/bergvarme/kalkulator",
         ),
     ]
@@ -74,25 +74,25 @@ with tab1:
         dict(
             title="",
             text="",
-            img="src/data/kringsjå_showcase.png",
+            img="src/data/kringsjå_showcase.PNG",
             link="https://www.asplanviak.no/verktoy/av-energiplanlegging/",
         ),
         dict(
             title="",
             text="",
-            img="src/data/tempe_showcase.png",
+            img="src/data/tempe_showcase.PNG",
             link="https://www.asplanviak.no/verktoy/av-energiplanlegging/"
         ),
         dict(
             title="",
             text="",
-            img="src/data/kildrift_showcase.png",
+            img="src/data/kildrift_showcase.PNG",
             link="https://www.asplanviak.no/verktoy/av-energiplanlegging/"
         ),
         dict(
             title="",
             text="",
-            img="src/data/melhus_showcase.png",
+            img="src/data/melhus_showcase.PNG",
             link="https://www.asplanviak.no/verktoy/av-energiplanlegging/"
         ),
     ]
@@ -110,31 +110,31 @@ with tab1:
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase.png",
+            img="src/data/internside_showcase.PNG",
             link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_5.png",
+            img="src/data/internside_showcase_5.PNG",
             link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_2.png",
+            img="src/data/internside_showcase_2.PNG",
             link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_4.png",
+            img="src/data/internside_showcase_4.PNG",
             link='https://av-energi.azurewebsites.net/'
         ),
         dict(
             title="",
             text="",
-            img="src/data/internside_showcase_3.png",
+            img="src/data/internside_showcase_3.PNG",
             link='https://av-energi.azurewebsites.net/'
         )
     ]
