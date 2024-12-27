@@ -25,7 +25,7 @@ st.title('Hei! Jeg er Magne Syljuåsen')
 st.write(""" 
          Sivilingeniør fra NTNU, og jobber som rådgiver innen bergvarme i Asplan Viak. 
          Har stor interesse for teknologi og er optatt av hvordan det kan bidra til å skape nye løsninger
-         samt effektivisere arbeidsoppgaver. Jobber i dag mye med programmering i Python og Streamlit for å 
+         samt effektivisere arbeidsoppgaver. Jobber i dag mye med programmering for å 
          lage ulike verktøy knyttet til helhetlig energiplanlegging og bergvarme. 
          """)
 
