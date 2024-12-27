@@ -153,25 +153,9 @@ div.stButton > button:first-child {
 }
 
 MainMenu {visibility: hidden;}
-
+header {visibility: hidden;}
 footer {visibility: hidden;}
         
-footer:hover,  footer:active {
-    color: #ffffff;
-    background-color: transparent;
-    text-decoration: underline;
-    transition: 400ms ease 0s;
-}
-
-footer:after {
-    content:"En tjeneste levert av Asplan Viak"; 
-    visibility: visible;
-    display: block;
-    position: relative;
-    padding: 5px;
-    top: 2px;
-    color: black;
-}
 
 
 
