@@ -29,7 +29,7 @@ st.write("""
          lage ulike verktøy knyttet til helhetlig energiplanlegging og bergvarme. 
          """)
 
-tab1, tab2, tab3 = st.tabs(['Tidligere prosjekter', 'Teknologier jeg bruker', 'Om meg'])
+tab1, tab2, tab3 = st.tabs(['Prosjekter', 'Teknologier', 'Om meg'])
 
 with tab1:
     st.header('Bergvarmekalkulatoren')

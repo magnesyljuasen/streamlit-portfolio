@@ -24,6 +24,12 @@ a {
     color: #36454f;
 }
 
+.stTabs [data-baseweb="tab-list"] button [data-testid="stMarkdownContainer"] p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    }
+
 /* SELECTBOX */
 .stSelectbox{
     text-align: center;
