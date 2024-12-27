@@ -180,4 +180,4 @@ with c1:
 with c2:
     render_click_logos(svg = GITHUB_SVG, text = "GitHub", link_url = "https://github.com/magnesyljuasen")
 with c3:
-    render_click_logos(svg = CODING_SVG, text = "CV", link_url = "https://github.com/magnesyljuasen/streamlit-portfolio/blob/main/CV.pdf")
+    render_click_logos(svg = CODING_SVG, text = "CV", link_url = "https://github.com/magnesyljuasen/streamlit-portfolio/blob/main/src/CV.pdf")
