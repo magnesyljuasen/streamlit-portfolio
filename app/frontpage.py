@@ -159,19 +159,16 @@ with tab3:
     st.header('Om meg')
     c1, c2, c3 = st.columns(3)
     with c1:
-        st.image('src/img/presentasjon.png', caption='Midt i en presentasjon for næringslivsforeningen i Stjørdal')
+        st.image('src/img/presentasjon.png', caption='Midt i en presentasjon for næringslivsforeningen i Stjørdal.', use_column_width=True)
     with c2:
-        st.image('src/img/påtur.png', caption='På fjelltur med min samboer Emma!')
+        st.image('src/img/påtur.png', caption='På fjelltur med min samboer Emma.', use_column_width=True)
     with c3:
-        st.image('src/img/medhund.png', caption='Vanligvis er jeg ikke så god med hunder, men denne var veldig rolig:-) ')
-    
-    c1, c2, c3 = st.columns(3)
-    with c1:
-        st.image('src/img/landslaget.png', caption='Toppen av fotballkarrieren - spilte på student-fotballlandslaget i EM i Portugal i 2018')
-    with c2:
-        st.image('src/img/idanmark.png', caption='På tur i København til mine hjemtrakter. Her bodde jeg i 8 år da jeg var barn.') 
-    with c3:
-        st.image('src/img/hytta.png', caption='Utsikten fra hytta på fjellet. Her er det godt å koble av!')
+        st.image('src/img/hytta.png', caption='Utsikten fra hytta på fjellet. Her er det godt å koble av!', use_column_width=True)
+#        st.image('src/img/medhund.png', caption='Vanligvis er jeg ikke så god med hunder, men denne var veldig rolig:-) ')
+#        st.image('src/img/landslaget.png', caption='Toppen av fotballkarrieren - spilte på student-fotballlandslaget i EM i Portugal i 2018')
+#        st.image('src/img/idanmark.png', caption='På tur i København til mine hjemtrakter. Her bodde jeg i 8 år da jeg var barn.') 
+
+        
 
 # Footer 
 c1, c2, c3 = st.columns(3)
