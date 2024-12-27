@@ -50,11 +50,13 @@ with tab1:
             title="",
             text="",
             img="src/data/bergvarmekalkulator_showcase.png",
+            link=""
         ),
         dict(
             title="",
             text="",
-            img="src/data/bergvarmekalkulator_showcase_3.png"
+            img="src/data/bergvarmekalkulator_showcase_3.png",
+            link=""
         ),
     ]
     carousel(items=items, container_height=600)
